@@ -2,42 +2,41 @@
 #include <conio.h>
 
 double somaPares(int n);
-
 int main(void)
 {
-  int numero,
-      function;
+  int numero;
+  double f;
 
   printf("Digite o numero que deseja calcular a soma: ");
-
   scanf("%d", &numero);
 
-  function = somaPares(numero);
+  //chamada da função somaPares
+  f = somaPares(numero);
 
-  printf("Soma de todos os numero pares: %d ", function);
+  printf("Soma de %d = %.0lf", numero, f);
 
   getch();
   return 0;
 }
+//Função recursiva
 
 double somaPares(int n)
 {
+  double valorSoma;
 
-  double numerosPares,
-      function;
-
-  if (n >= 1)
-  {
-    printf("Numeros: %d ", numerosPares);
-
-    numerosPares = (n % 2 == 0) ? numerosPares + n : numerosPares;
-  }
+  if (n <= 1)
+    return 0;
   else
   {
-    return 1;
+
+    if (n % 2 == 0)
+    {
+
+      valorSoma = n + somaPares(n - 1);
+      return (valorSoma);
+    }
+
+    valorSoma = somaPares(n - 1);
+    return (valorSoma);
   }
-
-  function = somaPares(n - 1);
-
-  return numerosPares;
 }
